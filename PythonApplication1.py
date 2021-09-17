@@ -23,9 +23,10 @@ def print_arr(arr):
 
 while True:
     try:
-        n = int(input("Input n: "))
-        k = int(input("Input k: (k<n) "))
+        n = int(input("Input n: ")) 
+        if (n<1): raise MyException
         
+        k = int(input("Input k: (k<n) "))
         if(k>=n): raise MyException
 
         arr = []
@@ -40,6 +41,6 @@ while True:
         continue
 
     except MyException:
-        print(" ERROR: k should be '<' n")
+        print(" ERROR")
         continue
     break
