@@ -55,7 +55,7 @@ while True:
         print("\n  RESULT: MATRIX B")
         print_array(n,m,matrixB)
 
-        string = input("\n\n If you want to finish enter 'exit': ")
+        string = input("\n If you want to finish enter 'exit': ")
         if(string == "exit"): break
 
     except ValueError:
