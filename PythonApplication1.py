@@ -1,5 +1,4 @@
 import random
-class MyClassException(Exception): pass
 
 def input_array(n, m, matrixA):
     print("Input the matrix of size " + str(n) + "x" + str(m))
@@ -40,7 +39,9 @@ while True:
         else:
             n = int(input("Input N: "))
             m = int(input("Input M: "))
-            if (n <= 1 or m <= 1): raise MyClassException
+            if (n <= 1 or m <= 1):
+                print("N and M must be '>' 1")
+                continue
 
             matrixA = [[0 for i in range(m)] for j in range(n)]
             if int_menu == 1: input_array(n, m, matrixA)
@@ -59,8 +60,5 @@ while True:
         if(string == "exit"): break
 
     except ValueError:
-        print(" ERROR: Variable should be INT\n")
-        continue
-    except MyClassException:
-        print(" ERROR: N and M should be '>' 1\n")
+        print(" ERROR: Variable must be INT\n")
         continue
