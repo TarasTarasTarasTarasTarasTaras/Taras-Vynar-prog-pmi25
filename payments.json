@@ -1,0 +1,38 @@
+[
+  {
+    "ID": "1",
+    "Amount": "250",
+    "Currency": "UAH",
+    "Email": "taras.vynar@lnu.edu.ua",
+    "Transaction ID": "21347253-12",
+    "Due to date": "12.04.2017",
+    "Request date": "14.07.2017"
+  },
+  {
+    "ID": "2",
+    "Amount": "300",
+    "Currency": "EUR",
+    "Email": "taras.vynar@lnu.edu.ua",
+    "Transaction ID": "19413624-49",
+    "Due to date": "18.06.2018",
+    "Request date": "03.08.2018"
+  },
+  {
+    "ID": "5555",
+    "Amount": "1000",
+    "Currency": "USD",
+    "Email": "taras.vynar@lnu.edu.ua",
+    "Transaction ID": "82354662-52",
+    "Due to date": "21.02.2019",
+    "Request date": "01.03.2019"
+  },
+  {
+    "ID": "8888",
+    "Amount": "2500",
+    "Currency": "EUR",
+    "Email": "taras.vynar@lnu.edu.ua",
+    "Transaction ID": "11324752-81",
+    "Due to date": "30.06.2020",
+    "Request date": "23.11.2020"
+  }
+]
