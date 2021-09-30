@@ -2,15 +2,9 @@ import random
 
 def input_array(matrixA):
     print("\n Input the matrix of size " + str(len(matrixA)) + "x" + str(len(matrixA[0])))
-    while True:
-        try:
-            for i in range(len(matrixA)):
-                for j in range(len(matrixA[i])):
-                    matrixA[i][j] = int(input("Matrix A["+str(i+1)+"]["+str(j+1)+"] = "))
-            break
-        except:
-            print(" ERROR: Value must be INT")
-            continue
+    for i in range(len(matrixA)):
+        for j in range(len(matrixA[i])):
+            matrixA[i][j] = enter_validated_number("Matrix A["+str(i+1)+"]["+str(j+1)+"] = ", "matrix element")
                     
 
 def input_random_from_A_to_B(matrixA, A, B):
@@ -35,6 +29,18 @@ def build_matrixB(matrixA, matrixB):
                 matrixB[i][j] += matrixA[k][j]
 
 
+def enter_validated_number(string, key):
+    try:
+        number = int(input(string))
+        if key == "size" and number < 1:
+            raise SyntaxError
+        return number
+    except ValueError:
+        raise ValueError("  ERROR: " + key + " must be INT\n")
+    except SyntaxError:
+        raise ValueError("  ERROR: size must be greater than 0\n")
+
+
 def menu():
     while True:
         str_menu = input("  Enter 'random' if you want to fill the matrix A with random numbers from A to B\n" +
@@ -47,33 +53,23 @@ def menu():
             print("\nPlease try again")
             continue
         else:
-            n = m = 0
-            while (n <= 0 or m <= 0):
-                print("\nN and M must be '>' 0")
-                try:
-                    n = int(input("Input N: "))
-                    m = int(input("Input M: "))
-                except: 
-                    print(" ERROR: N and M must be INT")
-                    continue
-
-            matrixA = [[0 for i in range(m)] for j in range(n)]
-            if str_menu == "fill": 
-                input_array(matrixA)
-            else:
-                while True:
-                    try:
-                        A = int(input(" Input A: "))
-                        B = int(input(" Input B: "))
-                        break
-                    except: 
-                        print("ERROR: A and B must be INT")
-                        continue
-                if A > B: 
-                    A=A+B; 
-                    B=A-B; 
-                    A=A-B;
-                input_random_from_A_to_B(matrixA, A, B)
+            try:
+                n = enter_validated_number("Enter rows: ", "size")
+                m = enter_validated_number("Enter columns: ", "size")
+                matrixA = [[0 for i in range(m)] for j in range(n)]
+                if str_menu == "fill":
+                    input_array(matrixA)
+                elif str_menu == "random":
+                    A = enter_validated_number("Enter A: ", "board")
+                    B = enter_validated_number("Enter B: ", "board")
+                    if A > B: 
+                        A=A+B; 
+                        B=A-B; 
+                        A=A-B;
+                    input_random_from_A_to_B(matrixA, A, B)
+            except ValueError as message:
+                print(str(message))
+                continue
 
         matrixB = [[0 for i in range(m)] for j in range(n)]
         build_matrixB(matrixA, matrixB)
