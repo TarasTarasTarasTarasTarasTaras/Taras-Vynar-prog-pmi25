@@ -22,7 +22,8 @@ def print_array(matrixA):
     print('\n')
         
 
-def build_matrixB(matrixA, matrixB):
+def build_matrixB(matrixA):
+    [[0 for i in range(len(matrixA[0]))] for j in range(len(matrixA))]
     for i in range(len(matrixA)):
         for j in range(len(matrixA[i])):
             for k in range(i, len(matrixA)):
@@ -71,8 +72,7 @@ def menu():
                 print(str(message))
                 continue
 
-        matrixB = [[0 for i in range(m)] for j in range(n)]
-        build_matrixB(matrixA, matrixB)
+        matrixB = build_matrixB(matrixA)
 
         print("\n\n  MATRIX A")
         print_array(matrixA)
