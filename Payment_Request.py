@@ -42,6 +42,29 @@ class PAYMENT_REQUEST:
         return self.__transaction_id
 
 
+    def set_id(self, id):
+        if self.__validation.validate_ID("ID", id) is True:
+            self.__ID = id
+    def set_payer_email(self, email):
+        if self.__validation.validate_email("Email", email) is True:
+            self.__payer_email = email
+    def set_amount(self, amount):
+        if self.__validation.validate_amount("Amount", amount) is True:
+            self.__amount = amount
+    def set_currency(self, currency):
+        if self.__validation.validate_currency("Currency", currency) is True:
+            self.__currency = currency
+    def set_request_date(self, date):
+        if self.__validation.validate_date("Request date", date) is True:
+            self.__payment_request_date = date
+    def set_due_to_date(self, date):
+        if self.__validation.validate_date("Due to date", date) is True:
+            self.__payment_due_to_date = date
+    def set_transaction_id(self, id):
+        if self.__validation.validate_transactionID("Transaction ID", id) is True:
+            self.__transaction_id = id
+
+
     def getAll_getters(self):
         array_of_getters = []
         for local_attr in dir(self):
