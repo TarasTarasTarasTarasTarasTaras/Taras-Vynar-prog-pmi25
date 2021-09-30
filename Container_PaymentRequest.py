@@ -63,14 +63,16 @@ class ContainerPAYMENT_REQUEST:
         except FileNotFoundError:
             raise ValueError("  ERROR: File not found")
 
-        file.write("[")
+        file.write("[\n")
         current_payment = 0
         for payments in self.__array_of_elements:
-            file.write(payments)
+            file.write("{")
+            file.write(str(payments))
+            file.write("}")
             current_payment += 1
-            if(current_payment < len(self.__array_of_elements) - 1):
-                file.write(", ")
-        file.write("]")
+            if(current_payment < len(self.__array_of_elements)):
+                file.write(",\n")
+        file.write("\n]")
         file.close()
 
 
