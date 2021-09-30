@@ -1,6 +1,5 @@
-import re
 import json
-from datetime import date
+from Validation import ExceptionPayment
 from Payment_Request import PAYMENT_REQUEST
 from Container_PaymentRequest import ContainerPAYMENT_REQUEST
 
@@ -23,18 +22,20 @@ def menu():
                      + "   3. Sort container by attribute\n"
                      + "   4. Delete payment from container by ID\n"
                      + "   5. Add payment to container by keyboard\n"
-                     + "   6. Exit\n"
+                     + "   6. Edit attribute of payment by ID\n"
+                     + "   7. Exit\n"
                      + " ==========================================\n")
 
         try:
-            if  (action == "1"): print_container(container)
-            elif(action == "2"): search_in_container(container)
-            elif(action == "3"): sort_container(container)
-            elif(action == "4"): delete_from_container(container)
-            elif(action == "5"): add_to_container(container)
-            elif(action == "6"): break
+            if   action == "1": print_container(container)
+            elif action == "2": search_in_container(container)
+            elif action == "3": sort_container(container)
+            elif action == "4": delete_from_container(container)
+            elif action == "5": add_to_container(container)
+            elif action == "6": edit_attribute_container(container)
+            elif action == "7": break
             else: print("Please try again")
-        except ValueError as message:
+        except (ValueError, ExceptionPayment) as message:
             print(str(message))
             continue
 
@@ -78,6 +79,12 @@ def add_to_container(container):
     payment = PAYMENT_REQUEST(id, amount, currency, email, transaction_id, due_to_date, request_date)
     container.append(payment)
 
+
+def edit_attribute_container(container):
+    id = input("Enter ID: ")
+    attr = input("Enter the attribute you want to edit: ")
+    value = input("Enter new value: ")
+    container.edit(id, attr, value)
 
 
 
