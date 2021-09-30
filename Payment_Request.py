@@ -17,13 +17,13 @@ class PAYMENT_REQUEST:
 
 
     def __str__(self):
-        return("ID: " + str(self.__ID) + 
-                "\nAmount: " + self.__amount +
-                "\nCurrency: " + str(self.__currency) + 
-                "\nEmail: " + self.__payer_email + 
-                "\nTransaction ID: " + self.__transaction_id + 
-                "\nDue to date: " + str(self.__payment_due_to_date) + 
-                "\nRequest date: " + str(self.__payment_request_date))
+        return('"ID": "' + str(self.__ID) + '",' +
+                '\n"Amount": "' + self.__amount + '",' +
+                '\n"Currency": "' + str(self.__currency) + '",' +
+                '\n"Email": "' + self.__payer_email + '",' + 
+                '\n"Transaction ID": "' + self.__transaction_id + '",' + 
+                '\n"Due to date": "' + str(self.__payment_due_to_date) + '",' + 
+                '\n"Request date": "' + str(self.__payment_request_date) + '"\n')
 
 
     def get_id(self):
