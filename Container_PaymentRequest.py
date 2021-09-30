@@ -1,6 +1,7 @@
 import json
 from Validation import Validation
 from Payment_Request import PAYMENT_REQUEST
+from Payment_Request import ExceptionPayment
 
 
 class ContainerPAYMENT_REQUEST: 
@@ -66,9 +67,9 @@ class ContainerPAYMENT_REQUEST:
         file.write("[\n")
         current_payment = 0
         for payments in self.__array_of_elements:
-            file.write("{")
+            file.write(" {\n")
             file.write(str(payments))
-            file.write("}")
+            file.write(" }")
             current_payment += 1
             if(current_payment < len(self.__array_of_elements)):
                 file.write(",\n")
@@ -139,6 +140,26 @@ class ContainerPAYMENT_REQUEST:
             self.__array_of_elements.sort(key = lambda payment : getattr(payment, value)())
 
         print("The container was successfully sorted by the attribute: " + key)
+
+
+    def edit(self, ID, _attribute, value):
+        attribute = str(_attribute).lower()
+        attribute = attribute.replace(" ", "_")
+        attribute = "set_" + attribute
+        
+        for payment in self.__array_of_elements:
+            if str(payment.get_id()) == str(ID):
+                try:
+                    setAttr = getattr(payment, attribute)
+                except:
+                    raise ExceptionPayment("Attribute " + _attribute + " is missing")
+                    return
+                setAttr(value)
+                if self.__file_name != "None":
+                        self.write_to_file(self.__file_name)
+                print("Attribute successfully edited")
+                return
+        raise ExceptionPayment("Element with id " + str(ID) + " is missing")
 
 
     def clear(self):
