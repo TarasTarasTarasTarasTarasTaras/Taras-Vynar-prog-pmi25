@@ -23,11 +23,12 @@ def print_array(matrixA):
         
 
 def build_matrixB(matrixA):
-    [[0 for i in range(len(matrixA[0]))] for j in range(len(matrixA))]
+    matrixB = [[0 for i in range(len(matrixA[0]))] for j in range(len(matrixA))]
     for i in range(len(matrixA)):
         for j in range(len(matrixA[i])):
             for k in range(i, len(matrixA)):
                 matrixB[i][j] += matrixA[k][j]
+    return matrixB
 
 
 def enter_validated_number(string, key):
