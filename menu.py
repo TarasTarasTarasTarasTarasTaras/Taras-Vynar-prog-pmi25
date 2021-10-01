@@ -5,18 +5,7 @@ from Container_PaymentRequest import ContainerPAYMENT_REQUEST
 
 
 def menu():
-    print("========================================")
-    print("The program that processes your payments")
-    while True:
-        try:
-            container = read_in_container()
-        except (FileNotFoundError, ValueError) as message:
-            print(str(message))
-            continue
-        break
-
-    while True:
-        action = input("\n ========== Select an operation ==========\n"
+    action = input("\n ========== Select an operation ==========\n"
                      + "   1. Print container\n"
                      + "   2. Search payments by attribute\n"
                      + "   3. Sort container by attribute\n"
@@ -25,19 +14,35 @@ def menu():
                      + "   6. Edit attribute of payment by ID\n"
                      + "   7. Exit\n"
                      + " ==========================================\n")
+    return action
 
+
+def main():
+    print("========================================")
+    print("The program that processes your payments")
+    while True:
         try:
-            if   action == "1": print_container(container)
-            elif action == "2": search_in_container(container)
-            elif action == "3": sort_container(container)
-            elif action == "4": delete_from_container(container)
-            elif action == "5": add_to_container(container)
-            elif action == "6": edit_attribute_container(container)
-            elif action == "7": break
-            else: print("Please try again")
-        except (ValueError, ExceptionPayment) as message:
+            container = read_in_container()
+            break
+        except (FileNotFoundError, ValueError) as message:
             print(str(message))
             continue
+ 
+
+    dictionaryActions = {"1" : print_container, "2" : search_in_container, "3" : sort_container, 
+                         "4" : delete_from_container, "5" : add_to_container, "6" : edit_attribute_container}
+
+    while True:
+        try:
+            action = menu()
+            if action == "7": break
+            else:
+                dictionaryActions[action](container)            
+        except KeyError:
+            print("Key is missing. Please try again")
+        except (ValueError, ExceptionPayment) as message:
+            print(str(message) + "\nPlease try again")
+            
 
 
 def read_in_container():
@@ -52,13 +57,19 @@ def print_container(container):
 
 
 def search_in_container(container):
-    attr = input("Enter an attribute to search: ")
+    attr = input("Enter an value to search: ")
     array = container.search_in_container(attr)
-    print("Payments found:\n" + str(array))
+    if len(array) > 0: print("Payments found:\n\n" + str(array))
 
 
 def sort_container(container):
-    attr = input("Enter an attribute to sort: ")
+    attr = input("  1. ID\n" +
+                 "  2. Amount\n" +
+                 "  3. Currency\n" + 
+                 "  4. Payer email\n" + 
+                 "  5. Due to date\n" +
+                 "  6. Request date\n" +
+                 "  7. Transaction id\n")
     container.sort(attr)
 
 
@@ -82,12 +93,16 @@ def add_to_container(container):
 
 def edit_attribute_container(container):
     id = input("Enter ID: ")
-    attr = input("Enter the attribute you want to edit: ")
+    attr = input("  1. ID\n" +
+                 "  2. Amount\n" +
+                 "  3. Currency\n" + 
+                 "  4. Payer email\n" + 
+                 "  5. Due to date\n" +
+                 "  6. Request date\n" +
+                 "  7. Transaction id\n")
     value = input("Enter new value: ")
     container.edit(id, attr, value)
 
 
 
-menu()
-
-
+main()
