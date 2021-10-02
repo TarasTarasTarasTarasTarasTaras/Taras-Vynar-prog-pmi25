@@ -1,0 +1,40 @@
+"ID": 1
+"Amount": 250
+"Currency": UAH
+"Email": taras.vynar@lnu.edu.ua
+"TransactionID": 21347253-12
+"Due_to_date": 12.04.2017
+"Request_date": 14.07.2017
+========================
+"ID": 2
+"Amount": 300
+"Currency": EUR
+"Email": taras.vynar@lnu.edu.ua
+"TransactionID": 19413624-49
+"Due_to_date": 18.06.2018
+"Request_date": 03.08.2018
+========================
+"ID": 4444
+"Amount": 1000
+"Currency": USD
+"Email": taras.vynar@lnu.edu.ua
+"TransactionID": 82354662-52
+"Due_to_date": 21.02.2019
+"Request_date": 01.03.2019
+========================
+"ID": 7777
+"Amount": 5000
+"Currency": EUR
+"Email": taras.vynar@lnu.edu.ua
+"TransactionID": 24311683-34
+"Due_to_date": 10.09.2020
+"Request_date": 15.10.2020
+========================
+"ID": 3
+"Amount": 1200
+"Currency": USD
+"Email": taras.vynar15@gmail.com
+"TransactionID": 35178452-23
+"Due_to_date": 21.04.2015
+"Request_date": 25.07.2015
+========================
