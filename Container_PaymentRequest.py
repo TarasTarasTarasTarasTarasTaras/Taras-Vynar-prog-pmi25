@@ -1,4 +1,3 @@
-import json
 from Validation import Validation
 from Payment_Request import PAYMENT_REQUEST
 from Payment_Request import ExceptionPayment
@@ -41,18 +40,16 @@ class ContainerPAYMENT_REQUEST:
         while len(array_values) > 0:
             try:
                 number += 1
-                payment = PAYMENT_REQUEST(
-                    array_values.pop(),
-                    array_values.pop(),
-                    array_values.pop(),
-                    array_values.pop(),
-                    array_values.pop(),
-                    array_values.pop(),
-                    array_values.pop())
+                array_attr = []
+                for i in range(len(PAYMENT_REQUEST.array_of_names)):
+                    array_attr.append(array_values.pop())
+
+                payment = PAYMENT_REQUEST(*array_attr)
+
             except ValueError as message:
                 print(message)
                 print("Product number " + str(number) + " is defective")
-                while len(array_values) > 0 and len(array_values) % 7 != 0:
+                while len(array_values) > 0 and len(array_values) % len(PAYMENT_REQUEST.array_of_names) != 0:
                     array_values.pop()
                 continue
             self.__array_of_elements.append(payment)
@@ -66,12 +63,12 @@ class ContainerPAYMENT_REQUEST:
 
         for payments in self.__array_of_elements:
             file.write(str(payments))
-            file.write("========================\n")
+            file.write("\n========================\n")
         file.close()
 
 
     def append(self, payment):    
-        self.__validation.validate_PAYMENT(payment)
+        self.__validation.validate_PAYMENT("payment", payment)
         
         self.__array_of_elements.append(payment)
         if self.__file_name != "None":
