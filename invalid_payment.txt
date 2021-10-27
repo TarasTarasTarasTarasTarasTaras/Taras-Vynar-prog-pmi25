@@ -1,0 +1,8 @@
+id: 3
+amount: 3000
+currency: Usd_@! 
+payer_email: taras?-]\vynar@lnu.edu.ua
+transaction_id: 2134-7253
+payment_due_to_date: 32.15.2022
+payment_request_date: 81.-1.2097
+========================
