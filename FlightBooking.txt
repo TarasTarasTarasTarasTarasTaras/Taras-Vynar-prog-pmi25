@@ -1,0 +1,28 @@
+aviaCompany: Wizzair
+noOfPeople: 100
+startTime: 10:10
+endTime: 12:50
+date: 12.03.2021
+flightNumber: FA1867
+====================
+aviaCompany: Ryanair
+noOfPeople: 200
+startTime: 15:40
+endTime: 17:20
+date: 15.07.2021
+flightNumber: AS3269
+====================
+aviaCompany: SkyUp
+noOfPeople: 250
+startTime: 21:05
+endTime: 23:20
+date: 01.11.2021
+flightNumber: QM1581
+====================
+aviaCompany: QatarAirlines
+noOfPeople: 20
+startTime: 05:15
+endTime: 08:40
+date: 21.09.2021
+flightNumber: YM3244
+====================
