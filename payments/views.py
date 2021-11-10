@@ -27,7 +27,7 @@ class PaymentAPI(APIView):
 
 
 class PaymentAPIwithID(APIView):
-    def get_object_of_response(self, id):
+    def get_object_or_response(self, id):
         try:
             return Payment.objects.get(pk = id)
         except Payment.DoesNotExist:
@@ -37,7 +37,7 @@ class PaymentAPIwithID(APIView):
 
 
     def get(self, request, id):
-        payment = self.get_object_of_response(id)
+        payment = self.get_object_or_response(id)
         if type(payment) is Response:
             return payment
         serializerPayment = PaymentSerializer(payment)
@@ -45,7 +45,7 @@ class PaymentAPIwithID(APIView):
     
     
     def put(self, request, id):
-        payment = self.get_object_of_response(id)
+        payment = self.get_object_or_response(id)
         if type(payment) is Response:
             return payment
         
@@ -61,7 +61,7 @@ class PaymentAPIwithID(APIView):
         
         
     def delete(self, request, id):
-        payment = self.get_object_of_response(id)
+        payment = self.get_object_or_response(id)
         if type(payment) is Response:
             return payment
         
