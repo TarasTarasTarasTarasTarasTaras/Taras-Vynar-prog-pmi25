@@ -1,0 +1,16 @@
+id: 1
+amount: 250
+currency: uah
+payer_email: taras.vynar@gmail.com
+transaction_id: 91347253-12
+payment_due_to_date: 12.04.2017
+payment_request_date: 14.07.2017
+========================
+id: 10
+amount: 2500
+currency: eur
+payer_email: taras.vynar@lnu.edu.ua
+transaction_id: 18573719-51
+payment_due_to_date: 05.01.2018
+payment_request_date: 21.05.2018
+========================
