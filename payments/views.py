@@ -5,6 +5,7 @@ from rest_framework.response import Response
 from rest_framework import status, filters
 from .models import Payment
 from .serializer import PaymentSerializer
+from django.utils.decorators import method_decorator
 
 # Create your views here.
 
