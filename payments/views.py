@@ -1,17 +1,25 @@
-from rest_framework.views import APIView
+#from rest_framework.views import APIView
+from rest_framework.generics import ListAPIView
+
 from rest_framework.response import Response
-from rest_framework import status
+from rest_framework import status, filters
 from .models import Payment
 from .serializer import PaymentSerializer
 
 # Create your views here.
 
-class PaymentAPI(APIView):
+@method_decorator(
+    name="get",
+    decorator=swagger_auto_schema(operation_description = DOCS.get['operation_name'],
+                                  responses = DOCS.get['responses'])
+)
+class PaymentAPI(ListAPIView):
+    '''
     def get(self, request):
         payments = Payment.objects.all()
         serializerPayment = PaymentSerializer(payments, many=True)
         return Response(serializerPayment.data)
-    
+    '''
     
     def post(self, request):
         serializerPayment = PaymentSerializer(data=request.data)
@@ -26,7 +34,7 @@ class PaymentAPI(APIView):
 
 
 
-class PaymentAPIwithID(APIView):
+class PaymentAPIwithID(ListAPIView):
     def get_object_or_response(self, id):
         try:
             return Payment.objects.get(pk = id)
