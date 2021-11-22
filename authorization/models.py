@@ -32,10 +32,10 @@ class Roles(Enum):
 
 class User(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default=False)
-    first_name = models.CharField(max_length=50)#, validators=[ValidateFirstLastName('first_name'),])
-    last_name = models.CharField(max_length=50)#, validators=[ValidateFirstLastName('last_name'),])
+    first_name = models.CharField(max_length=50, validators=[ValidateFirstLastName('first_name'),])
+    last_name = models.CharField(max_length=50, validators=[ValidateFirstLastName('last_name'),])
     email = models.EmailField(max_length=50, unique=True)
-    password = models.CharField(max_length=255)#, validators=[ValidatePassword(),])
+    password = models.CharField(max_length=255, validators=[ValidatePassword(),])
     role = models.IntegerField(choices=Roles.items(), default=0)
     
     USERNAME_FIELD = 'email'
